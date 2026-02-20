@@ -166,7 +166,7 @@ wheels = [
 ]
 
 [[package]]
-name = "discord-flux-bridgeremake"
+name = "discord-flux"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
@@ -198,15 +198,25 @@ wheels = [
 ]
 
 [[package]]
+name = "emoji"
+version = "2.15.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a2/78/0d2db9382c92a163d7095fc08efff7800880f830a152cfced40161e7638d/emoji-2.15.0.tar.gz", hash = "sha256:eae4ab7d86456a70a00a985125a03263a5eac54cd55e51d7e184b1ed3b6757e4", size = 615483, upload-time = "2025-09-21T12:13:02.755Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e1/5e/4b5aaaabddfacfe36ba7768817bd1f71a7a810a43705e531f3ae4c690767/emoji-2.15.0-py3-none-any.whl", hash = "sha256:205296793d66a89d88af4688fa57fd6496732eb48917a87175a023c8138995eb", size = 608433, upload-time = "2025-09-21T12:13:01.197Z" },
+]
+
+[[package]]
 name = "fluxer-py"
-version = "0.1.2"
+version = "0.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
+    { name = "emoji" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/29/f5/c70734608ab7a6069a0da405786151f4a8cfa29ad997d8231894aafdaa85/fluxer_py-0.1.2.tar.gz", hash = "sha256:fa33ac20151ab00597b191f1814a50b296fd750c03e6ff5347150f79ffa98f1f", size = 24958, upload-time = "2026-02-14T13:47:54.044Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/8e/73/f32cd5279d4ddb436c3fb8dde725a8216a8f079a2f4111bbdf07e45bf162/fluxer_py-0.3.1.tar.gz", hash = "sha256:8c27aa50e276ebd26aee3722e3dda6cd07ab5cc9ac40490bbda94f05c0c8d212", size = 39431, upload-time = "2026-02-19T10:11:40.884Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/53/88/2f58ae5c25bdea73d43bf633ef681ed7a18b2dd50d753ea6445649b92f7c/fluxer_py-0.1.2-py3-none-any.whl", hash = "sha256:25195109a1625628d41e2b1b7c41c7abe3dba546eb5cd4683a296875c7fe1483", size = 31152, upload-time = "2026-02-14T13:47:52.748Z" },
+    { url = "https://files.pythonhosted.org/packages/77/74/0b30714ef8bd777146a19b87e50ca1c6b86e8f256a0a076b913552077063/fluxer_py-0.3.1-py3-none-any.whl", hash = "sha256:de18e11c0a1f9483afd1add12bce4abb42a662a8cf1b88053d8b9bc6928d72ba", size = 48009, upload-time = "2026-02-19T10:11:39.89Z" },
 ]
 
 [[package]]

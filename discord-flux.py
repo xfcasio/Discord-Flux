@@ -14,7 +14,6 @@ load_dotenv()
 confloc = "bridges.json"
 dbfile = "messages.db"
 api_base = "https://api.fluxer.app"
-marker = "\u200b"
 
 def loadconf():
     if not os.path.exists(confloc): return {}
@@ -92,6 +91,20 @@ class FluxerBridge:
                     return webhook
         except: return None
 
+    def iswebhookd(self, message):
+        if not message.webhook_id:
+            return False
+        cached = self.dwebhooks.get(message.channel_id)
+        return cached is not None and message.channel_id == cached.id
+
+    def iswebhookf(self, message):
+        webhookid = getattr(message, 'webhook_id', None)
+        if not webhookid:
+            return False
+        channelid = str(message.channel_id)
+        cached = self.fwebhooks.get(channel_id)
+        return cached is not None and str(webhook_id) == str(cached['id'])
+
     def setupevents(self):
         @self.discord.event
         async def on_ready():
@@ -100,7 +113,8 @@ class FluxerBridge:
         @self.discord.event
         async def on_message(message):
             await self.discord.process_commands(message)
-            if message.author.bot or message.webhook_id: return
+            if self.iswebhookd(message): return
+            if message.author.bot: return
             if message.content.startswith(self.prefix): return
 
             cid = str(message.channel.id)
@@ -142,7 +156,7 @@ class FluxerBridge:
             text = f"{replyhead}{message.clean_content}".strip()
             if text:
                 payload = {
-                    "content": f"{text} {marker}",
+                    "content": text,
                     "username": message.author.display_name,
                     "avatar_url": str(message.author.display_avatar.url)
                 }
@@ -162,7 +176,7 @@ class FluxerBridge:
 
         @self.fluxer.event
         async def on_message(message):
-            if marker in message.content: return
+            if self.iswebhookf(message): return
             if message.author.id == self.fluxer.user.id or getattr(message.author, 'bot', False): return
 
             did = next((k for k, v in self.bridges.items() if v == str(message.channel_id)), None)
